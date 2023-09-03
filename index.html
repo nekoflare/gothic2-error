@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+    </style> 
+    <style>
+        body
+        {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .WindowsContainer
+        {
+            background-color: #ffffff;
+            width: 1000px;
+            height: 600px;
+            border-radius: 5px;
+            border: 2px solid #101010;
+            overflow: hidden;
+        }
+
+        .TopBar
+        {
+            background: linear-gradient(to right, #1e1e1f, #cdcdf7);
+            width: 100%;
+            height: 25px;
+            border-bottom: 2px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .WindowName
+        {
+            color: black;
+        }
+
+        .WindowNameText
+        {
+            margin-left: 10px;
+            width: min-content;
+            color: white;
+        }
+
+        .ButtonGroup
+        {
+            /* width: 100px; */
+            float: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .CloseButtonText
+        {
+            width: 45px;
+            height: 22px;
+            margin-right: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+
+        .TopBarButtons 
+        {
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .Contents
+        {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ViolationAccessHeader
+        {
+            width: 100%;
+            text-align: center;
+        }
+
+        .ViolationAccessHeaderText
+        {
+            margin: 0;
+            margin-top: 5px;
+        }
+
+        .CopiedToClipboard
+        {
+            padding-left: 25px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="WindowsContainer">
+        <div class="TopBar">
+            <div class="WindowName">
+                <span class="WindowNameText">
+                    Application Error: Violation Access
+                </span>
+            </div>
+            <div class="ButtonGroup">
+                <!--
+                <div class="HideButton">
+                    <span class="TopBarButtons HideButtonText">
+                        H
+                    </span>
+                </div>
+                <div class="MinimalizeButton">
+                    <span class="TopBarButtons MinimalizeButtonText">
+                        M
+                    </span>
+                </div>
+                -->
+                <div class="CloseButton">
+                    <button class="CloseButtonText">
+                        <b>X</b>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="Contents">
+            <div class="ViolationAccessHeader">
+                <h1 class="ViolationAccessHeaderText">Violation Access</h1>
+            </div>
+            <style>
+                .RegistersInfo
+                {
+                    font-size: 12.5px;
+                    width: 250px;
+                    padding-left: 20px;
+                }
+
+                .Registers
+                {
+                    font-size: 10px;
+                    border: 2px inset black;
+                    display: flex;
+                }
+
+                .RegsRight
+                {
+                    padding-left: 10px;
+                }
+
+                .Bottom
+                {
+                    bottom: 0;
+                }
+
+
+                .EndTaskButton
+                {
+                    border: 2px solid cyan;
+                    border-radius: 5px;
+                    width: 80px;
+                    height: 22px;
+                }
+            </style>
+            <div class="RegistersInfo">
+                <div class="Why">
+                    <span>Gothic II - 2.6 (fix) has caused an access violation at address 004E956Ch by attempting to "read" from address 00000000h.</span>
+                </div>
+                <div class="Registers">
+                    <div class="RegsLeft">
+                        DS = 002Bh<br>
+                        ES = 002Bh<br>
+                        FS = 0053h<br>
+                        GS = 002Bh<br>
+                        CS:EIP = 0023h:004E956Ch<br>
+                        SS:ESP = 002Bh:0135F370h<br>
+                        SS:EBP = 002Bh:1543C770h<br>
+                    </div>
+                    <div class="RegsRight">
+                        EAX =        0h<br>
+                        EBX = 74F518FAh<br>
+                        ECX =        3h<br>
+                        EDX =   83E91Ch<br>
+                        ESI =   82E6F0h<br>
+                        EDI =  2DB41ACh<br>
+                        EBP =  1643C77h<br>
+                    </div>
+                </div>
+            </div>
+            <style>
+                .CallStack
+                {
+                    padding-left: 25px;
+                    padding-top: 10px;
+                }
+
+                .NoResize
+                {
+                    resize: none;
+                }
+
+                .CallStackData
+                {
+                    width: 500px;
+                    height: 250px;
+                    font-size: 10px;
+                    font-family: 'Roboto Mono', monospace;
+                }
+            </style>
+            <div class="CallStack">
+                Call Stack:
+                <hr>
+                <textarea class="NoResize CallStackData" readonly>
+0023:004E956C (0x1543C770 0x1270F974 0x1543C730 0x0082E6F0) Gothic2.exe, zCMusicSys_DirectMusic::LoadThemeByScript()+2284 byte(s), P:\dev\g2addon\release\ZenGir 0023:004E8BAF (0x1543C770 0x00000000 0x00000000 0x00000000) Gothic2.exe, zCMusicSys_DirectMusic:: PlayThemeByScript()+255 byte(s), P:\dev\g2addon\release\ZenGin\_ 0023:004DB7C6 (0x0082E6F0 0x00000000 0x0135FCA8 0x00000000) Gothic2.exe, zCMenu::Enter()+70 byte(s), P:\dev\g2addon\release ZenGin\_carsten\zMenu.cpp, line 403 0023:0042957E (0x00000000 0x00400000 0x00252DBE 0x0135FECC) Gothic2.exe, CGameManager::Menu()+686 byte(s), P:\dev\g2addon\release\Gothic\_bert\oGameManager.c 0023:00425C35 (0x0082F0EC 0x00000000 0x000E0408 0x127CF3F4) Gothic2.exe, CGameManager::Run(+1029 bytes), P:\dev\g2addon\release\Gothic\_bert\oGameManager.c 0023:0078188B (0x0000002C 0x00073115 0x00000003 0x00000000) Gothic2.exe, MainProg()+75 byte(s), P:\dev\g2addon\release\Gothic_ulf Phoenix.cpp, line 111 0023:00503270 (0x00400000 0x00000000 0x00252DBE 0x00000001) Gothic2.exe, HandledWinMain()+928 byte(s), P:\dev\g2addon\release\ZenGin\_carsten\zWin32.cpp, line 11 0023:00502DFD (0x0135FEDO 0x00000000 0x00252DBE 0x00000001) Gothic2.exe, WinMain(+141 byte(s), P:\dev\g2addon\release ZenGin_carsten\zWin32.cpp, line 1054+17 0023:007D43F8 (0x00000004 0x0000FFFF 0x00000088 0x00000000) Gothic2.exe, WinMainCRT Startup()+224 byte[s]
+                </textarea>
+            </div>
+            <span class="CopiedToClipboard">An error description has been copied to the clipboard.</span>
+            <div class="KillProcessContainer">
+                <div class="SecondButtonBorder">
+                    <button class="Killprocess"><u>E</u>nd Task</button>
+                </div>
+            </div>
+            <style>
+                .KillProcessContainer
+                {
+                    width: 100%;
+                    display: flex;
+                    justify-content: right;
+                }
+
+                .Killprocess
+                {
+                    width: 80px;
+                    border: 2px solid rgb(2, 179, 179);
+                    border-radius: 4px;
+                    margin-right: 10px;
+                }
+            </style>
+        </div>
+    </div>
+</body>
+</html>
